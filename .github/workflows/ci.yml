@@ -25,6 +25,7 @@ jobs:
           - 3.0
         env:
           - DIFF_LCS_VERSION: "> 1.4.3"
+        parallel: [1, 2, 3]
       fail-fast: false
     continue-on-error: ${{ matrix.allow_failure || endsWith(matrix.ruby, 'head') }}
     env: ${{ matrix.env }}

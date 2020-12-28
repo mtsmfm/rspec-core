@@ -25,7 +25,7 @@ jobs:
           - 3.0
         env:
           - DIFF_LCS_VERSION: "> 1.4.3"
-        parallel: [1, 2, 3]
+        parallel_node: [1, 2, 3]
       fail-fast: false
     continue-on-error: ${{ matrix.allow_failure || endsWith(matrix.ruby, 'head') }}
     env: ${{ matrix.env }}
@@ -38,4 +38,5 @@ jobs:
       - run: script/update_rubygems_and_install_bundler
       - run: script/clone_all_rspec_repos
       - run: bundle install --binstubs --standalone
-      - run: script/run_build
+      - run: echo ${{ matrix.paralle_node }}
+      # - run: script/run_build
